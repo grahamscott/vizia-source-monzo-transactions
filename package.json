@@ -1,0 +1,28 @@
+{
+  "name": "monzo-transactions-source",
+  "version": "1.0.0",
+  "description": "a Tapir-compatible source for Monzo bank transactions",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js test/**/*.js | faucet"
+  },
+  "keywords": [
+    "monzo",
+    "vizia",
+    "tapir"
+  ],
+  "author": "Graham Scott",
+  "license": "ISC",
+  "dependencies": {
+    "@vizia/tapir": "github:vizia/tapir"
+  },
+  "devDependencies": {
+    "eslint": "3.3.1",
+    "eslint-config-vizia": "1.1.2",
+    "faucet": "0.0.1",
+    "nock": "^8.0.0",
+    "sinon": "^1.17.5",
+    "tape": "^4.6.0",
+    "xhr2": "^0.1.3"
+  }
+}
