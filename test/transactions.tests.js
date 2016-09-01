@@ -84,6 +84,30 @@ test('calls the mondo api transactions endpoint with the since date', assert => 
     });
 });
 
+test('expands merchants if config specifies', assert => {
+    const config = {
+        accountId: 'accountId',
+        since: '2016-08-01T23:00:00Z',
+        fetchMerchantDetails: true
+    };
+
+    const scope = nock(MONDO_API_URL, { encodedQueryParams : true })
+        .get('/transactions')
+        .query({
+            account_id: config.accountId,
+            since: config.since,
+            expand: ['merchant']
+        })
+        .reply(200, jsonResponse);
+
+    const source = transactions.create(config);
+
+    source(null, (end, data) => {
+        assert.true(scope.isDone(), 'request made');
+        assert.end();
+    });
+});
+
 test('calls the mondo api transactions endpoint with the oauth token header', assert => {
     const config = {
         accountId: 'accountId',
